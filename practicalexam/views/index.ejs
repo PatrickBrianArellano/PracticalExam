@@ -7,7 +7,13 @@
 </head>
 <body>
 	<div>
-		 
+		 <% if (messages.error) { %>
+			<p style="color:red"><%- messages.error[0] %></p>
+        <% } %>
+
+		<% if (messages.success) { %>
+			<p class="alert alert-success mt-4"><%- messages.success %></p>
+		<% } %>  
 	</div>    
 	<br>
 	<table class="table">
@@ -46,5 +52,27 @@
 
 	</tbody>
 	</table>
+
+	<!-- Add -->
+	<form action="/add" method="post" name="form1">
+	<div class="form-group">
+	  <label>ID</label>
+	  <input type="text" class="form-control" name="id" id="id" value="" placeholder="Enter ID" >
+	</div>
+	<div class="form-group">
+	  <label>Name</label>
+	  <input type="text" class="form-control" name="name" id="name" value="" placeholder="Enter Name">
+	</div>
+	<div class="form-group">
+	  <label>Quantity</label>
+	  <input type="text"  class="form-control" name="qty" id="qty" placeholder="Enter Quantity" value="">
+	</div>
+	<div class="form-group">
+	  <label>Amount</label>
+	  <input type="text"  class="form-control" name="amount" id="amount" placeholder="Enter Amount" value="">
+	</div>
+
+	<input type="submit" class="btn btn-primary" value="Add">
+	</form>
 </body>
 </html>
