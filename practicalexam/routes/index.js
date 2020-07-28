@@ -147,4 +147,22 @@ router.post('/update/:id', function (req, res, next) {
     }
 })
 
+// DELETE Item
+router.get('/delete/:id', function (req, res, next) {
+    var user = { id: req.params.id }
+
+    connection.query('DELETE FROM items WHERE id = "' + req.params.id + '"', user, function (err, result) {
+        //if(err) throw err
+        if (err) {
+            req.flash('error', err)
+            // refresh the page
+            res.redirect('/')
+        } else {
+            req.flash('success', 'Item deleted successfully! id = ' + req.params.id)
+            // refresh the page
+            res.redirect('/')
+        }
+    })
+})
+
 module.exports = router;
